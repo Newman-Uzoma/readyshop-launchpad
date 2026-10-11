@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# ReadyShop Launchpad
 
-## Project info
+**ReadyShop Launchpad helps entrepreneurs and small businesses establish their online presence with a clearer starting point.**
 
-**URL**: https://lovable.dev/projects/aec911b5-b099-4b78-8df6-922b958b05af
+We showcase Shopify theme concepts, offer Shopify store setup assistance, and provide small-business website services.
 
-## How can I edit this code?
+## Services
 
-There are several ways of editing your application.
+- **Shopify Themes:** Browse theme designs and check availability.
+- **Shopify Store Setup:** Get help configuring an eligible theme, homepage sections, navigation, branding, and product listings.
+- **Business Websites:** Get a one-page or two-page website for your business.
+- **Additional Services:** Basic SEO setup, eligible Google Business Profile assistance, and business email and domain guidance.
 
-**Use Lovable**
+## Project Status
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aec911b5-b099-4b78-8df6-922b958b05af) and start prompting.
+ReadyShop Launchpad is under development. Some services and designs may not yet be available.
 
-Changes made via Lovable will be committed automatically to this repo.
+**VELORA is currently in development and is not presented as a finished theme available for purchase.**
 
-**Use your preferred IDE**
+## Technology
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project uses:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui components
+- Lucide icons
 
-Follow these steps:
+## Run Locally
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Requirements
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Install Node.js and npm before starting.
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Clone the repository:
+
+```bash
+git clone https://github.com/Newman-Uzoma/readyshop-launchpad.git
+```
+
+Open the project folder:
+
+```bash
+cd readyshop-launchpad
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open the local URL displayed in your terminal.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Pricing and Scope
 
-**Use GitHub Codespaces**
+Prices shown on the website are introductory estimates in USD and may change. Final pricing depends on the agreed project scope.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Third-party costs, including Shopify subscriptions, domains, paid applications, and payment provider fees, are separate unless explicitly agreed otherwise.
 
-## What technologies are used for this project?
+Custom e-commerce backend development is not included in the standard services.
 
-This project is built with:
+## Contact
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Email:** uzomanewman989@gmail.com
+- **WhatsApp:** +234 906 741 8436
 
-## How can I deploy this project?
+Contact ReadyShop Launchpad to discuss a service, confirm availability, and agree on the project scope.
 
-Simply open [Lovable](https://lovable.dev/projects/aec911b5-b099-4b78-8df6-922b958b05af) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+© 2026 ReadyShop Launchpad. All rights reserved.

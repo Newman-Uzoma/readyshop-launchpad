@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+
 import {
   ArrowRight,
   Check,
@@ -24,7 +25,12 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 
 const stores = [
   {
@@ -203,7 +209,7 @@ const StoreShowcase = () => {
 
   return (
     <section
-      id="stores"
+      aria-labelledby="store-showcase-title"
       className="scroll-mt-20 bg-[#FAF9F7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
@@ -213,7 +219,10 @@ const StoreShowcase = () => {
             The ReadyShop collection
           </p>
 
-          <h2 className="font-serif text-4xl leading-tight tracking-tight text-[#292625] sm:text-5xl">
+          <h2
+            id="store-showcase-title"
+            className="font-serif text-4xl leading-tight tracking-tight text-[#292625] sm:text-5xl"
+          >
             Find the right store
             <span className="block italic text-[#8A6F52]">
               for your next idea.
@@ -222,8 +231,9 @@ const StoreShowcase = () => {
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#625B55] sm:text-lg">
             Explore Shopify store concepts across different industries.
-            From beauty and fashion to electronics and home living, our
-            collection is being developed for a range of business ideas.
+            VELORA is in development, while the other designs are planned
+            concepts. Contact ReadyShop to ask about current services and
+            availability.
           </p>
         </div>
 
@@ -233,7 +243,10 @@ const StoreShowcase = () => {
           onValueChange={setSelectedCategory}
           className="w-full"
         >
-          <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-2 bg-transparent p-0">
+          <TabsList
+            aria-label="Filter store concepts by industry"
+            className="mb-8 flex h-auto flex-wrap justify-start gap-2 bg-transparent p-0"
+          >
             {categories.map((category) => (
               <TabsTrigger
                 key={category.id}
@@ -268,12 +281,14 @@ const StoreShowcase = () => {
                         <img
                           src={store.image}
                           alt={`${store.name} Shopify theme concept`}
+                          loading="lazy"
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                         />
                       ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center p-6">
                           <div className="flex h-20 w-20 items-center justify-center rounded-full border border-current/10 bg-white/60">
                             <StoreIcon
+                              aria-hidden="true"
                               className={`h-9 w-9 ${store.iconColor}`}
                               strokeWidth={1.3}
                             />
@@ -291,7 +306,10 @@ const StoreShowcase = () => {
 
                       {store.featured && (
                         <Badge className="absolute left-4 top-4 rounded-full border-0 bg-[#292625] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-[#F5F0E9] hover:bg-[#292625]">
-                          <Sparkles className="mr-1.5 h-3 w-3" />
+                          <Sparkles
+                            aria-hidden="true"
+                            className="mr-1.5 h-3 w-3"
+                          />
                           Featured theme
                         </Badge>
                       )}
@@ -300,7 +318,7 @@ const StoreShowcase = () => {
                         variant="outline"
                         className="absolute right-4 top-4 rounded-full border-[#D8CEC2] bg-white/90 px-3 py-1.5 text-xs font-medium text-[#625B55]"
                       >
-                        {isVelora ? "In development" : "Planned"}
+                        {store.status}
                       </Badge>
                     </div>
 
@@ -311,11 +329,9 @@ const StoreShowcase = () => {
                       </p>
 
                       <CardTitle
-                        className={`mt-2 ${
-                          isVelora
-                            ? "font-serif text-2xl font-normal tracking-wide"
-                            : "font-serif text-2xl font-normal"
-                        } text-[#292625]`}
+                        className={`mt-2 font-serif text-2xl font-normal text-[#292625] ${
+                          isVelora ? "tracking-wide" : ""
+                        }`}
                       >
                         {store.name}
                       </CardTitle>
@@ -338,7 +354,10 @@ const StoreShowcase = () => {
                               key={item}
                               className="flex items-start gap-2.5 text-sm text-[#625B55]"
                             >
-                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]" />
+                              <Check
+                                aria-hidden="true"
+                                className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]"
+                              />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -347,17 +366,22 @@ const StoreShowcase = () => {
 
                       <div className="mt-6">
                         <Button
+                          type="button"
                           disabled
+                          aria-label={`${store.name}: coming soon, not available for purchase`}
                           className="w-full cursor-not-allowed rounded-full bg-[#EAE4DD] text-[#756B61] hover:bg-[#EAE4DD]"
                         >
-                          <Clock className="mr-2 h-4 w-4" />
+                          <Clock
+                            aria-hidden="true"
+                            className="mr-2 h-4 w-4"
+                          />
                           Coming Soon
                         </Button>
 
                         <p className="mt-3 text-center text-xs leading-5 text-[#8A8179]">
                           {isVelora
-                            ? "This theme is still being built."
-                            : "This store concept has not been released yet."}
+                            ? "VELORA is still being developed and is not yet available for purchase."
+                            : "This is a planned concept and is not yet available for purchase."}
                         </p>
                       </div>
                     </CardContent>
@@ -381,15 +405,15 @@ const StoreShowcase = () => {
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-[#625B55] sm:text-base">
-                We plan to expand the collection into more niches as new
-                Shopify themes are developed. This is a growing collection,
-                not a beauty-only marketplace.
+                We plan to expand the collection as new Shopify themes are
+                developed. Have an industry in mind? Contact ReadyShop to
+                discuss your requirements.
               </p>
             </div>
 
             <div className="flex shrink-0 items-center gap-3 text-sm font-medium text-[#8A6F52]">
-              Explore the collection
-              <ArrowRight className="h-5 w-5" />
+              <span>More concepts coming soon</span>
+              <ArrowRight aria-hidden="true" className="h-5 w-5" />
             </div>
           </div>
         </div>

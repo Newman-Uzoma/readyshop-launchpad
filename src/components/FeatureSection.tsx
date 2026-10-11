@@ -1,3 +1,4 @@
+
 import {
   LayoutGrid,
   Smartphone,
@@ -16,7 +17,7 @@ const FeatureSection = () => {
       icon: <LayoutGrid className="h-5 w-5" />,
       title: "Themes for different industries",
       description:
-        "Explore store concepts for beauty, fashion, electronics, wellness, home and living, pets, and other retail niches.",
+        "Explore planned store concepts for beauty, fashion, electronics, wellness, home and living, pets, and other retail niches.",
       points: [
         "Multiple business categories",
         "Distinct visual directions",
@@ -27,9 +28,9 @@ const FeatureSection = () => {
       icon: <Smartphone className="h-5 w-5" />,
       title: "Designed with mobile in mind",
       description:
-        "Discover storefront designs planned to provide a clear, easy-to-browse experience across desktop, tablet, and mobile screens.",
+        "Discover storefront designs intended to provide a clear browsing experience across desktop, tablet, and mobile screens.",
       points: [
-        "Responsive layouts",
+        "Responsive design goals",
         "Clear browsing experiences",
       ],
     },
@@ -49,7 +50,7 @@ const FeatureSection = () => {
       icon: <ShoppingBag className="h-5 w-5" />,
       title: "Product-focused layouts",
       description:
-        "Explore storefront concepts designed to present products clearly, organize collections, and help shoppers browse.",
+        "Explore storefront concepts planned to present products clearly, organize collections, and help shoppers browse.",
       points: [
         "Product presentation",
         "Collection-focused layouts",
@@ -60,7 +61,7 @@ const FeatureSection = () => {
       icon: <Layers3 className="h-5 w-5" />,
       title: "A growing collection",
       description:
-        "ReadyShop is being developed to include more themes and industry categories as new store concepts become available.",
+        "ReadyShop plans to introduce more themes and industry categories as additional store concepts are developed and become available.",
       points: [
         "New store concepts planned",
         "More industries to explore",
@@ -71,7 +72,7 @@ const FeatureSection = () => {
       icon: <Compass className="h-5 w-5" />,
       title: "Find a direction for your business",
       description:
-        "Compare different styles and business niches to find a store concept that fits the direction you want to take.",
+        "Compare different styles and business niches to identify a store concept that fits the direction you want to take.",
       points: [
         "Explore different niches",
         "Choose a suitable starting point",
@@ -81,7 +82,7 @@ const FeatureSection = () => {
 
   return (
     <section
-      id="features"
+      aria-labelledby="features-section-title"
       className="border-b border-[#E8E2DB] bg-[#F3EEE7] px-6 py-20 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
@@ -91,7 +92,10 @@ const FeatureSection = () => {
               Why ReadyShop
             </p>
 
-            <h2 className="max-w-xl font-serif text-4xl leading-[1.1] tracking-[-0.035em] text-[#292625] sm:text-5xl lg:text-6xl">
+            <h2
+              id="features-section-title"
+              className="max-w-xl font-serif text-4xl leading-[1.1] tracking-[-0.035em] text-[#292625] sm:text-5xl lg:text-6xl"
+            >
               A simpler way to
               <span className="block italic text-[#8A6F52]">
                 find your store.
@@ -102,7 +106,8 @@ const FeatureSection = () => {
               Starting an online business begins with choosing the right
               foundation. ReadyShop brings together Shopify store concepts
               for different industries, giving you a place to explore ideas
-              for your next online business.
+              for your next online business. Availability varies while the
+              collection is being developed.
             </p>
 
             <a
@@ -110,7 +115,10 @@ const FeatureSection = () => {
               className="group mt-8 inline-flex items-center text-sm font-medium text-[#292625] transition hover:text-[#8A6F52]"
             >
               Explore store concepts
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                aria-hidden="true"
+                className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              />
             </a>
 
             <div className="mt-10 border-t border-[#D8CEC2] pt-6">
@@ -130,7 +138,10 @@ const FeatureSection = () => {
                 className="flex flex-col rounded-[1.35rem] border border-[#E2DAD2] bg-[#FAF9F7] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#CFC0AF] hover:shadow-[0_18px_45px_rgba(41,38,37,0.06)] sm:p-7"
               >
                 <div className="mb-7 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5D9CB] bg-white text-[#8A6F52]">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5D9CB] bg-white text-[#8A6F52]"
+                  >
                     {feature.icon}
                   </div>
 
@@ -153,7 +164,10 @@ const FeatureSection = () => {
                       key={point}
                       className="flex items-start gap-2.5 text-sm text-[#625B55]"
                     >
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]" />
+                      <Check
+                        aria-hidden="true"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]"
+                      />
                       <span>{point}</span>
                     </div>
                   ))}

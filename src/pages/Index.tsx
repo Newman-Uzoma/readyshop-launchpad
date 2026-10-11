@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   ArrowRight,
@@ -130,8 +131,8 @@ const Index = () => {
         )}
       </header>
 
-      {/* HERO */}
       <main>
+        {/* HERO */}
         <section
           id="home"
           className="relative overflow-hidden border-b border-[#E8E2DB] bg-[#F3EEE7] pt-32"
@@ -141,21 +142,22 @@ const Index = () => {
               <div className="mb-6 inline-flex items-center rounded-full border border-[#D8CEC2] bg-white/60 px-4 py-2">
                 <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#8A6F52]" />
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-[#625B55]">
-                  Ready-made Shopify stores
+                  Shopify themes and store setup
                 </span>
               </div>
 
               <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.035em] text-[#292625] sm:text-6xl lg:text-7xl">
-                Start with a store
+                Build your online presence
                 <span className="block italic text-[#8A6F52]">
-                  built to impress.
+                  with a clearer starting point.
                 </span>
               </h1>
 
               <p className="mt-7 max-w-xl text-lg leading-8 text-[#625B55]">
-                Explore professionally designed Shopify stores created for
-                modern businesses. Choose a starting point and build your
-                brand from there.
+                Explore Shopify theme concepts and store setup services for
+                modern businesses. Some designs are still in development.
+                Contact ReadyShop to confirm current availability, pricing,
+                and the right starting point for your business.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -205,7 +207,7 @@ const Index = () => {
                       The ReadyShop Collection
                     </p>
                     <h2 className="mt-2 font-serif text-3xl text-[#292625]">
-                      A store for every idea.
+                      Ideas for your next store.
                     </h2>
                   </div>
 
@@ -262,7 +264,7 @@ const Index = () => {
                       Multiple industries
                     </p>
                     <p className="mt-1 text-xs text-[#77706A]">
-                      One place to find your next store
+                      One place to explore store concepts
                     </p>
                   </div>
                   <ArrowRight className="h-5 w-5 text-[#8A6F52]" />
@@ -287,7 +289,7 @@ const Index = () => {
           <PricingSection />
         </div>
 
-        {/* TESTIMONIALS */}
+        {/* BENEFITS / ENQUIRY PROCESS */}
         <TestimonialsSection />
 
         {/* CTA */}
@@ -350,8 +352,10 @@ const Index = () => {
               </a>
 
               <p className="mt-5 max-w-md text-sm leading-7 text-[#C8C0BA]">
-                Ready-made Shopify stores designed to give entrepreneurs a
-                polished starting point for their next online business.
+                Shopify themes, store setup assistance, and business
+                websites to help entrepreneurs establish their online
+                presence. Store concepts may still be in development;
+                contact us to confirm current availability.
               </p>
             </div>
 
