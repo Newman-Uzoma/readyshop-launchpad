@@ -1,4 +1,18 @@
-import React, { useState } from "react";
+
+import { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  Clock,
+  Sparkles,
+  Shirt,
+  Laptop,
+  HeartPulse,
+  Palette,
+  PawPrint,
+  House,
+  ShoppingBag,
+} from "lucide-react";
 
 import {
   Card,
@@ -12,483 +26,373 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import {
-  ArrowRight,
-  Check,
-  Image as ImageIcon,
-  Clock,
-} from "lucide-react";
+const stores = [
+  {
+    id: "velora",
+    name: "VELORA",
+    category: "beauty",
+    categoryLabel: "Beauty & Self-Care",
+    description:
+      "An elegant beauty and self-care Shopify theme with a warm, editorial visual direction.",
+    image: "/velora-hero 1.png",
+    icon: Sparkles,
+    status: "In development",
+    featured: true,
+    direction: [
+      "Premium beauty aesthetic",
+      "Responsive storefront design",
+      "Product collection layouts",
+    ],
+    background: "bg-[#F3E8DC]",
+    iconColor: "text-[#8A6F52]",
+  },
+  {
+    id: "fashion",
+    name: "Fashion Store",
+    category: "fashion",
+    categoryLabel: "Fashion & Apparel",
+    description:
+      "A planned storefront concept for clothing brands, fashion collections, and accessories.",
+    image: null,
+    icon: Shirt,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Editorial fashion presentation",
+      "Collection-focused layout",
+      "Brand-led visual direction",
+    ],
+    background: "bg-[#EEE8E1]",
+    iconColor: "text-[#756354]",
+  },
+  {
+    id: "tech",
+    name: "Electronics Store",
+    category: "electronics",
+    categoryLabel: "Electronics & Technology",
+    description:
+      "A planned store concept for technology products, electronics, and accessories.",
+    image: null,
+    icon: Laptop,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Product-focused presentation",
+      "Clear product categories",
+      "Modern visual direction",
+    ],
+    background: "bg-[#E7EBEF]",
+    iconColor: "text-[#536779]",
+  },
+  {
+    id: "wellness",
+    name: "Wellness Store",
+    category: "health",
+    categoryLabel: "Health & Wellness",
+    description:
+      "A planned storefront concept for wellness brands and everyday self-care products.",
+    image: null,
+    icon: HeartPulse,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Calm visual presentation",
+      "Product-led collections",
+      "Clean, readable layout",
+    ],
+    background: "bg-[#E8EDE5]",
+    iconColor: "text-[#5F785B]",
+  },
+  {
+    id: "handmade",
+    name: "Artisan Store",
+    category: "handmade",
+    categoryLabel: "Handmade & Crafts",
+    description:
+      "A planned concept for independent makers, handcrafted goods, and creative brands.",
+    image: null,
+    icon: Palette,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Craft-focused storytelling",
+      "Product gallery presentation",
+      "Distinctive brand styling",
+    ],
+    background: "bg-[#F0E6DA]",
+    iconColor: "text-[#9A704E]",
+  },
+  {
+    id: "pets",
+    name: "Pet Store",
+    category: "pets",
+    categoryLabel: "Pets & Pet Supplies",
+    description:
+      "A planned storefront concept for pet products, accessories, and animal-care brands.",
+    image: null,
+    icon: PawPrint,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Friendly brand presentation",
+      "Organized product collections",
+      "Accessible navigation",
+    ],
+    background: "bg-[#F2E8DF]",
+    iconColor: "text-[#96745B]",
+  },
+  {
+    id: "home",
+    name: "Home & Living",
+    category: "home",
+    categoryLabel: "Home & Lifestyle",
+    description:
+      "A planned concept for home décor, furniture, and lifestyle product businesses.",
+    image: null,
+    icon: House,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Lifestyle-led presentation",
+      "Room and product collections",
+      "Warm visual styling",
+    ],
+    background: "bg-[#EAE4DB]",
+    iconColor: "text-[#776653]",
+  },
+  {
+    id: "general",
+    name: "Everyday Essentials",
+    category: "general",
+    categoryLabel: "General Retail",
+    description:
+      "A planned flexible storefront concept for brands selling a variety of everyday products.",
+    image: null,
+    icon: ShoppingBag,
+    status: "Planned concept",
+    featured: false,
+    direction: [
+      "Flexible product categories",
+      "Simple shopping layout",
+      "Adaptable brand direction",
+    ],
+    background: "bg-[#EAE8E2]",
+    iconColor: "text-[#706B5E]",
+  },
+];
+
+const categories = [
+  { id: "all", name: "All Stores" },
+  { id: "beauty", name: "Beauty" },
+  { id: "fashion", name: "Fashion" },
+  { id: "electronics", name: "Electronics" },
+  { id: "health", name: "Wellness" },
+  { id: "handmade", name: "Handmade" },
+  { id: "pets", name: "Pets" },
+  { id: "home", name: "Home & Living" },
+  { id: "general", name: "General Retail" },
+];
 
 const StoreShowcase = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const stores = [
-    {
-      id: 0,
-      name: "VELORA",
-      category: "beauty",
-      price: 2999,
-      description:
-        "Premium beauty and self-care Shopify store designed with an elegant, luxury-focused shopping experience.",
-      features: [
-        "Premium Beauty Design",
-        "Responsive Mobile Layout",
-        "Product Showcase",
-        "Shopify Theme",
-      ],
-      image: "/velora-hero 1.png",
-      demo: "#",
-      comingSoon: true,
-      popular: true,
-    },
-
-    {
-      id: 1,
-      name: "Fashion Elite",
-      category: "fashion",
-      price: 2999,
-      description:
-        "Premium fashion store with advanced filtering and AR try-on",
-      features: ["AR Try-On", "Size Guide", "Wishlist", "Reviews"],
-      image: "/placeholder.svg",
-      demo: "https://fashion-demo.storebuilder.pro",
-      popular: false,
-    },
-
-    {
-      id: 2,
-      name: "TechHub Store",
-      category: "electronics",
-      price: 3499,
-      description:
-        "Electronics store with product comparison and tech specs",
-      features: [
-        "Product Compare",
-        "Tech Specs",
-        "Warranty Info",
-        "Live Chat",
-      ],
-      image: "/placeholder.svg",
-      demo: "https://tech-demo.storebuilder.pro",
-    },
-
-    {
-      id: 3,
-      name: "Wellness Haven",
-      category: "health",
-      price: 2799,
-      description:
-        "Health & wellness store with subscription management",
-      features: [
-        "Subscriptions",
-        "Health Tracker",
-        "Expert Advice",
-        "Community",
-      ],
-      image: "/placeholder.svg",
-      demo: "https://wellness-demo.storebuilder.pro",
-    },
-
-    {
-      id: 4,
-      name: "Artisan Marketplace",
-      category: "handmade",
-      price: 2499,
-      description:
-        "Handmade goods store with artist profiles and custom orders",
-      features: [
-        "Artist Profiles",
-        "Custom Orders",
-        "Gift Wrapping",
-        "Authenticity",
-      ],
-      image: "/placeholder.svg",
-      demo: "https://artisan-demo.storebuilder.pro",
-    },
-
-    {
-      id: 5,
-      name: "Pet Paradise",
-      category: "pets",
-      price: 2199,
-      description:
-        "Pet supplies store with pet care guides and vet consultation",
-      features: [
-        "Pet Profiles",
-        "Care Guides",
-        "Vet Chat",
-        "Auto-Delivery",
-      ],
-      image: "/placeholder.svg",
-      demo: "https://pet-demo.storebuilder.pro",
-    },
-
-    {
-      id: 6,
-      name: "Home & Garden Pro",
-      category: "home",
-      price: 2899,
-      description:
-        "Home improvement store with room planner and project guides",
-      features: [
-        "Room Planner",
-        "Project Guides",
-        "Installation Service",
-        "Samples",
-      ],
-      image: "/placeholder.svg",
-      demo: "https://home-demo.storebuilder.pro",
-    },
-  ];
-
-  const categories = [
-    {
-      id: "all",
-      name: "All Stores",
-      count: stores.length,
-    },
-    {
-      id: "beauty",
-      name: "Beauty",
-      count: stores.filter((s) => s.category === "beauty").length,
-    },
-    {
-      id: "fashion",
-      name: "Fashion",
-      count: stores.filter((s) => s.category === "fashion").length,
-    },
-    {
-      id: "electronics",
-      name: "Electronics",
-      count: stores.filter((s) => s.category === "electronics").length,
-    },
-    {
-      id: "health",
-      name: "Health & Wellness",
-      count: stores.filter((s) => s.category === "health").length,
-    },
-    {
-      id: "handmade",
-      name: "Handmade",
-      count: stores.filter((s) => s.category === "handmade").length,
-    },
-    {
-      id: "pets",
-      name: "Pets",
-      count: stores.filter((s) => s.category === "pets").length,
-    },
-    {
-      id: "home",
-      name: "Home & Garden",
-      count: stores.filter((s) => s.category === "home").length,
-    },
-  ];
 
   const filteredStores =
     selectedCategory === "all"
       ? stores
       : stores.filter((store) => store.category === selectedCategory);
 
-  const handleDemo = (store: typeof stores[number]) => {
-    if (store.comingSoon) return;
-
-    window.open(store.demo, "_blank");
-  };
-
   return (
     <section
       id="stores"
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-white"
+      className="scroll-mt-20 bg-[#FAF9F7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
+        {/* SECTION INTRODUCTION */}
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-[#8A6F52]">
+            The ReadyShop collection
+          </p>
 
-        {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Premium Store Templates
+          <h2 className="font-serif text-4xl leading-tight tracking-tight text-[#292625] sm:text-5xl">
+            Find the right store
+            <span className="block italic text-[#8A6F52]">
+              for your next idea.
+            </span>
           </h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Choose from our collection of professionally designed,
-            conversion-optimized Shopify stores. Each template is built
-            to give your business a polished online presence.
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[#625B55] sm:text-lg">
+            Explore Shopify store concepts across different industries.
+            From beauty and fashion to electronics and home living, our
+            collection is being developed for a range of business ideas.
           </p>
         </div>
 
-        {/* Category Filter */}
+        {/* CATEGORY FILTERS */}
         <Tabs
           value={selectedCategory}
           onValueChange={setSelectedCategory}
-          className="mb-12"
+          className="w-full"
         >
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 h-auto p-1">
+          <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-2 bg-transparent p-0">
             {categories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="text-xs sm:text-sm px-2 py-3 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                className="rounded-full border border-[#E2DAD2] bg-white px-4 py-2.5 text-sm text-[#625B55] data-[state=active]:border-[#292625] data-[state=active]:bg-[#292625] data-[state=active]:text-white"
               >
                 {category.name}
-
-                <Badge
-                  variant="secondary"
-                  className="ml-1 text-xs"
-                >
-                  {category.count}
-                </Badge>
               </TabsTrigger>
             ))}
           </TabsList>
 
-          <TabsContent
-            value={selectedCategory}
-            className="mt-8"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+          <TabsContent value={selectedCategory} className="mt-0">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredStores.map((store) => {
-                const isVelora = store.name === "VELORA";
+                const StoreIcon = store.icon;
+                const isVelora = store.id === "velora";
 
                 return (
                   <Card
                     key={store.id}
-                    className={
+                    className={`group flex h-full flex-col overflow-hidden rounded-2xl border shadow-none transition duration-300 hover:-translate-y-1 hover:shadow-xl ${
                       isVelora
-                        ? "group overflow-hidden border-[#D8CEC2] bg-[#F8F4EE] shadow-lg hover:shadow-2xl transition-all duration-500"
-                        : "group hover:shadow-xl transition-all duration-300 border-slate-200 overflow-hidden"
-                    }
+                        ? "border-[#D8CEC2] bg-[#F8F4EE]"
+                        : "border-[#E8E2DB] bg-white"
+                    }`}
                   >
+                    {/* STORE IMAGE OR CATEGORY ARTWORK */}
+                    <div
+                      className={`relative flex aspect-[5/3] items-center justify-center overflow-hidden ${store.background}`}
+                    >
+                      {store.image ? (
+                        <img
+                          src={store.image}
+                          alt={`${store.name} Shopify theme concept`}
+                          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full flex-col items-center justify-center p-6">
+                          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-current/10 bg-white/60">
+                            <StoreIcon
+                              className={`h-9 w-9 ${store.iconColor}`}
+                              strokeWidth={1.3}
+                            />
+                          </div>
 
-                    {/* Featured Store */}
-                    {store.popular && (
-                      <div className="bg-[#292625] text-[#F5F0E9] text-center py-3 text-sm tracking-[0.18em] uppercase font-medium">
-                        <span className="mr-2">✦</span>
-                        Featured Store
-                      </div>
-                    )}
+                          <p className="mt-5 text-center font-serif text-2xl text-[#292625]">
+                            {store.name}
+                          </p>
 
-                    {/* Image */}
-                    <div className="relative overflow-hidden">
-                      <div
-                        className={
-                          isVelora
-                            ? "aspect-video bg-[#E9DED1] flex items-center justify-center"
-                            : "aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center"
-                        }
-                      >
-
-                        {store.image !== "/placeholder.svg" ? (
-                          <img
-                            src={store.image}
-                            alt={store.name + " store preview"}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                          />
-                        ) : (
-                          <ImageIcon className="h-12 w-12 text-slate-400" />
-                        )}
-
-                        {/* Hover Overlay */}
-                        <div
-                          className={
-                            isVelora
-                              ? "absolute inset-0 bg-[#292625]/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                              : "absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                          }
-                        >
-
-                          {store.comingSoon ? (
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              disabled
-                              className="bg-[#F5F0E9] text-[#292625] border-0"
-                            >
-                              <Clock className="mr-2 h-4 w-4" />
-                              Coming Soon
-                            </Button>
-                          ) : (
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              onClick={() => handleDemo(store)}
-                            >
-                              View Live Demo
-                            </Button>
-                          )}
-
+                          <p className="mt-2 text-center text-xs uppercase tracking-[0.16em] text-[#77706A]">
+                            {store.categoryLabel}
+                          </p>
                         </div>
-                      </div>
+                      )}
+
+                      {store.featured && (
+                        <Badge className="absolute left-4 top-4 rounded-full border-0 bg-[#292625] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-[#F5F0E9] hover:bg-[#292625]">
+                          <Sparkles className="mr-1.5 h-3 w-3" />
+                          Featured theme
+                        </Badge>
+                      )}
+
+                      <Badge
+                        variant="outline"
+                        className="absolute right-4 top-4 rounded-full border-[#D8CEC2] bg-white/90 px-3 py-1.5 text-xs font-medium text-[#625B55]"
+                      >
+                        {isVelora ? "In development" : "Planned"}
+                      </Badge>
                     </div>
 
-                    {/* Store Information */}
-                    <CardHeader>
-                      <div className="flex justify-between items-start gap-4">
+                    {/* STORE DETAILS */}
+                    <CardHeader className="flex-1 pb-4">
+                      <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#8A6F52]">
+                        {store.categoryLabel}
+                      </p>
 
-                        <div>
-                          <CardTitle
-                            className={
-                              isVelora
-                                ? "text-2xl font-normal tracking-wide text-[#292625] font-serif"
-                                : "text-xl"
-                            }
-                          >
-                            {store.name}
-                          </CardTitle>
+                      <CardTitle
+                        className={`mt-2 ${
+                          isVelora
+                            ? "font-serif text-2xl font-normal tracking-wide"
+                            : "font-serif text-2xl font-normal"
+                        } text-[#292625]`}
+                      >
+                        {store.name}
+                      </CardTitle>
 
-                          {isVelora && (
-                            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#8B7D70]">
-                              Beauty · Self-Care · Shopify
-                            </p>
-                          )}
-
-                          <CardDescription
-                            className={
-                              isVelora
-                                ? "mt-3 text-[#665C55] leading-relaxed"
-                                : "mt-2"
-                            }
-                          >
-                            {store.description}
-                          </CardDescription>
-                        </div>
-
-                        <div className="text-right flex-shrink-0">
-                          {isVelora ? (
-                            <>
-                              <div className="text-sm font-medium uppercase tracking-wider text-[#8B7D70]">
-                                Coming
-                              </div>
-
-                              <div className="text-sm font-medium uppercase tracking-wider text-[#8B7D70]">
-                                Soon
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <div className="text-2xl font-bold text-blue-600">
-                                ${store.price}
-                              </div>
-
-                              <div className="text-sm text-slate-500">
-                                one-time
-                              </div>
-                            </>
-                          )}
-                        </div>
-
-                      </div>
+                      <CardDescription className="pt-2 text-sm leading-6 text-[#706861]">
+                        {store.description}
+                      </CardDescription>
                     </CardHeader>
 
-                    {/* Features */}
-                    <CardContent>
-                      <div className="space-y-4">
+                    {/* DESIGN DIRECTION */}
+                    <CardContent className="mt-auto">
+                      <div className="border-t border-[#E8E2DB] pt-5">
+                        <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#625B55]">
+                          Design direction
+                        </h3>
 
-                        <div>
-                          <h4
-                            className={
-                              isVelora
-                                ? "font-medium text-[#292625] mb-3"
-                                : "font-medium text-slate-900 mb-2"
-                            }
-                          >
-                            Key Features:
-                          </h4>
-
-                          <div className="space-y-2">
-                            {store.features.map((feature, index) => (
-                              <div
-                                key={index}
-                                className={
-                                  isVelora
-                                    ? "flex items-center text-sm text-[#665C55]"
-                                    : "flex items-center text-sm text-slate-600"
-                                }
-                              >
-                                <Check
-                                  className={
-                                    isVelora
-                                      ? "h-4 w-4 text-[#8B7D70] mr-2 flex-shrink-0"
-                                      : "h-4 w-4 text-green-500 mr-2 flex-shrink-0"
-                                  }
-                                />
-
-                                {feature}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Buttons */}
-                        <div className="flex gap-2 pt-4">
-
-                          {store.comingSoon ? (
-                            <Button
-                              disabled
-                              className="flex-1 bg-[#DED3C8] text-[#665C55] hover:bg-[#DED3C8] cursor-not-allowed"
+                        <ul className="space-y-2.5">
+                          {store.direction.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2.5 text-sm text-[#625B55]"
                             >
-                              <Clock className="mr-2 h-4 w-4" />
-                              Coming Soon
-                            </Button>
-                          ) : (
-                            <Button
-                              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                              onClick={() => handleDemo(store)}
-                            >
-                              Buy Now
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                          )}
+                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                          {!store.comingSoon && (
-                            <Button
-                              variant="outline"
-                              size="default"
-                              onClick={() => handleDemo(store)}
-                            >
-                              Demo
-                            </Button>
-                          )}
+                      <div className="mt-6">
+                        <Button
+                          disabled
+                          className="w-full cursor-not-allowed rounded-full bg-[#EAE4DD] text-[#756B61] hover:bg-[#EAE4DD]"
+                        >
+                          <Clock className="mr-2 h-4 w-4" />
+                          Coming Soon
+                        </Button>
 
-                        </div>
-
+                        <p className="mt-3 text-center text-xs leading-5 text-[#8A8179]">
+                          {isVelora
+                            ? "This theme is still being built."
+                            : "This store concept has not been released yet."}
+                        </p>
                       </div>
                     </CardContent>
-
                   </Card>
                 );
               })}
-
             </div>
           </TabsContent>
         </Tabs>
 
-        {/* Custom Store CTA */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        {/* MORE INDUSTRIES */}
+        <div className="mt-16 rounded-3xl border border-[#E3DAD0] bg-[#F3EEE7] px-6 py-8 sm:px-9 sm:py-10">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#8A6F52]">
+                More possibilities
+              </p>
 
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                Need Something Custom?
-              </CardTitle>
+              <h3 className="mt-3 font-serif text-2xl text-[#292625] sm:text-3xl">
+                Your industry could be next.
+              </h3>
 
-              <CardDescription className="text-lg">
-                Let our team create a completely custom Shopify store
-                tailored to your specific business needs.
-              </CardDescription>
-            </CardHeader>
+              <p className="mt-3 text-sm leading-6 text-[#625B55] sm:text-base">
+                We plan to expand the collection into more niches as new
+                Shopify themes are developed. This is a growing collection,
+                not a beauty-only marketplace.
+              </p>
+            </div>
 
-            <CardContent>
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              >
-                Request Custom Store
-              </Button>
-            </CardContent>
-
-          </Card>
+            <div className="flex shrink-0 items-center gap-3 text-sm font-medium text-[#8A6F52]">
+              Explore the collection
+              <ArrowRight className="h-5 w-5" />
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
   );

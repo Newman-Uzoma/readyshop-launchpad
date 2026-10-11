@@ -1,210 +1,166 @@
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Settings, Smartphone, CreditCard, Shield, ArrowRight, Check } from "lucide-react";
+import {
+  LayoutGrid,
+  Smartphone,
+  Palette,
+  ShoppingBag,
+  Layers3,
+  Compass,
+  Check,
+  ArrowRight,
+} from "lucide-react";
 
 const FeatureSection = () => {
   const features = [
     {
-      icon: <Settings className="h-8 w-8" />,
-      title: "API-First Integration",
-      description: "Seamless integration with Shopify's Admin API for instant store setup and configuration",
-      benefits: [
-        "Automated product import",
-        "Theme customization",
-        "App installation",
-        "Domain configuration"
+      number: "01",
+      icon: <LayoutGrid className="h-5 w-5" />,
+      title: "Themes for different industries",
+      description:
+        "Explore store concepts for beauty, fashion, electronics, wellness, home and living, pets, and other retail niches.",
+      points: [
+        "Multiple business categories",
+        "Distinct visual directions",
       ],
-      badge: "Technical Excellence"
     },
     {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile-First Design",
-      description: "Every store is optimized for mobile commerce with responsive design and fast loading",
-      benefits: [
-        "Progressive Web App (PWA)",
-        "Touch-optimized interface",
-        "Offline functionality",
-        "App-like experience"
+      number: "02",
+      icon: <Smartphone className="h-5 w-5" />,
+      title: "Designed with mobile in mind",
+      description:
+        "Discover storefront designs planned to provide a clear, easy-to-browse experience across desktop, tablet, and mobile screens.",
+      points: [
+        "Responsive layouts",
+        "Clear browsing experiences",
       ],
-      badge: "User Experience"
     },
     {
-      icon: <CreditCard className="h-8 w-8" />,
-      title: "Payment Gateway Ready",
-      description: "Pre-configured payment processing with multiple gateway options and fraud protection",
-      benefits: [
-        "Stripe, PayPal, Apple Pay",
-        "International payments",
-        "Fraud detection",
-        "PCI compliance"
+      number: "03",
+      icon: <Palette className="h-5 w-5" />,
+      title: "A starting point for your brand",
+      description:
+        "Choose a design direction that suits your business vision, then shape the branding, content, and products around your idea.",
+      points: [
+        "Brand-focused presentation",
+        "Room for personalization",
       ],
-      badge: "E-commerce Ready"
     },
     {
-      icon: <Shield className="h-8 w-8" />,
-      title: "Enterprise Security",
-      description: "Bank-level security with SSL certificates, data encryption, and regular backups",
-      benefits: [
-        "SSL certificates included",
-        "Data encryption",
-        "Regular security updates",
-        "GDPR compliance"
+      number: "04",
+      icon: <ShoppingBag className="h-5 w-5" />,
+      title: "Product-focused layouts",
+      description:
+        "Explore storefront concepts designed to present products clearly, organize collections, and help shoppers browse.",
+      points: [
+        "Product presentation",
+        "Collection-focused layouts",
       ],
-      badge: "Security First"
-    }
-  ];
-
-  const apiFeatures = [
-    "Real-time inventory sync",
-    "Automated order management",
-    "Customer data integration",
-    "Analytics and reporting",
-    "Multi-channel selling",
-    "Third-party app integration"
+    },
+    {
+      number: "05",
+      icon: <Layers3 className="h-5 w-5" />,
+      title: "A growing collection",
+      description:
+        "ReadyShop is being developed to include more themes and industry categories as new store concepts become available.",
+      points: [
+        "New store concepts planned",
+        "More industries to explore",
+      ],
+    },
+    {
+      number: "06",
+      icon: <Compass className="h-5 w-5" />,
+      title: "Find a direction for your business",
+      description:
+        "Compare different styles and business niches to find a store concept that fits the direction you want to take.",
+      points: [
+        "Explore different niches",
+        "Choose a suitable starting point",
+      ],
+    },
   ];
 
   return (
-    <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-4">
-            ⚡ Powerful Features
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Everything You Need to Succeed
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Our pre-built stores come with advanced features and integrations that would typically 
-            take months to develop and cost thousands of dollars.
-          </p>
-        </div>
+    <section
+      id="features"
+      className="border-b border-[#E8E2DB] bg-[#F3EEE7] px-6 py-20 lg:px-8 lg:py-28"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#8A6F52]">
+              Why ReadyShop
+            </p>
 
-        {/* Main Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow border-slate-200">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white">
+            <h2 className="max-w-xl font-serif text-4xl leading-[1.1] tracking-[-0.035em] text-[#292625] sm:text-5xl lg:text-6xl">
+              A simpler way to
+              <span className="block italic text-[#8A6F52]">
+                find your store.
+              </span>
+            </h2>
+
+            <p className="mt-7 max-w-xl text-base leading-8 text-[#625B55] sm:text-lg">
+              Starting an online business begins with choosing the right
+              foundation. ReadyShop brings together Shopify store concepts
+              for different industries, giving you a place to explore ideas
+              for your next online business.
+            </p>
+
+            <a
+              href="#stores"
+              className="group mt-8 inline-flex items-center text-sm font-medium text-[#292625] transition hover:text-[#8A6F52]"
+            >
+              Explore store concepts
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <div className="mt-10 border-t border-[#D8CEC2] pt-6">
+              <p className="font-serif text-2xl text-[#292625]">
+                One marketplace.
+              </p>
+              <p className="mt-1 font-serif text-2xl italic text-[#8A6F52]">
+                Many possibilities.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {features.map((feature) => (
+              <article
+                key={feature.number}
+                className="flex flex-col rounded-[1.35rem] border border-[#E2DAD2] bg-[#FAF9F7] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#CFC0AF] hover:shadow-[0_18px_45px_rgba(41,38,37,0.06)] sm:p-7"
+              >
+                <div className="mb-7 flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5D9CB] bg-white text-[#8A6F52]">
                     {feature.icon}
                   </div>
-                  <Badge variant="outline" className="text-xs">
-                    {feature.badge}
-                  </Badge>
+
+                  <span className="text-xs tracking-[0.16em] text-[#A79A8C]">
+                    {feature.number}
+                  </span>
                 </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-                <CardDescription className="text-base">{feature.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {feature.benefits.map((benefit, benefitIndex) => (
-                    <div key={benefitIndex} className="flex items-center text-sm text-slate-600">
-                      <Check className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
-                      {benefit}
+
+                <h3 className="font-serif text-xl leading-snug text-[#292625] sm:text-2xl">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-4 flex-1 text-sm leading-7 text-[#776E66]">
+                  {feature.description}
+                </p>
+
+                <div className="mt-6 space-y-3 border-t border-[#E8E2DB] pt-5">
+                  {feature.points.map((point) => (
+                    <div
+                      key={point}
+                      className="flex items-start gap-2.5 text-sm text-[#625B55]"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#8A6F52]" />
+                      <span>{point}</span>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* API Integration Highlight */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl text-white p-8 mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Seamless API Integration
-              </h3>
-              <p className="text-lg text-blue-100 mb-6">
-                Our advanced API integration ensures your store is connected to all the tools and 
-                services you need from day one. No technical setup required.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {apiFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center text-sm">
-                    <Check className="h-4 w-4 mr-2 flex-shrink-0" />
-                    {feature}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <div className="bg-slate-900 rounded-lg p-4 font-mono text-sm">
-                <div className="text-green-400 mb-2">// Automatic store setup</div>
-                <div className="text-blue-300">const store = await createStore(&#123;</div>
-                <div className="text-slate-300 ml-4">template: "fashion-elite",</div>
-                <div className="text-slate-300 ml-4">domain: "yourbrand.com",</div>
-                <div className="text-slate-300 ml-4">customization: options</div>
-                <div className="text-blue-300">&#125;);</div>
-                <div className="text-green-400 mt-2">// Store ready in minutes! ⚡</div>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
-        </div>
-
-        {/* Customization Options */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="lg:col-span-2 border-slate-200">
-            <CardHeader>
-              <CardTitle className="text-2xl">Unlimited Customization</CardTitle>
-              <CardDescription className="text-base">
-                Every aspect of your store can be customized to match your brand and business needs.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-slate-900">Design Customization</h4>
-                  <ul className="space-y-1 text-sm text-slate-600">
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Colors & Typography</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Logo & Branding</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Layout Options</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Custom Pages</li>
-                  </ul>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-slate-900">Feature Configuration</h4>
-                  <ul className="space-y-1 text-sm text-slate-600">
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Product Catalogs</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Shipping Options</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Tax Configuration</li>
-                    <li className="flex items-center"><Check className="h-3 w-3 text-green-500 mr-2" />Multi-language</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-slate-200">
-            <CardHeader>
-              <CardTitle>24/7 Support</CardTitle>
-              <CardDescription>
-                Get expert help whenever you need it
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center text-sm">
-                  <Check className="h-4 w-4 text-green-500 mr-2" />
-                  Live chat support
-                </div>
-                <div className="flex items-center text-sm">
-                  <Check className="h-4 w-4 text-green-500 mr-2" />
-                  Video tutorials
-                </div>
-                <div className="flex items-center text-sm">
-                  <Check className="h-4 w-4 text-green-500 mr-2" />
-                  Technical documentation
-                </div>
-                <div className="flex items-center text-sm">
-                  <Check className="h-4 w-4 text-green-500 mr-2" />
-                  Community forum
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>

@@ -1,181 +1,416 @@
+import { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  Mail,
+  MessageCircle,
+  Menu,
+  X,
+} from "lucide-react";
 
-import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Check, ArrowRight, Smartphone, Settings, CreditCard, Shield } from "lucide-react";
-import StoreShowcase from '@/components/StoreShowcase';
-import FeatureSection from '@/components/FeatureSection';
-import PricingSection from '@/components/PricingSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import CTASection from '@/components/CTASection';
+import StoreShowcase from "@/components/StoreShowcase";
+import FeatureSection from "@/components/FeatureSection";
+import PricingSection from "@/components/PricingSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import CTASection from "@/components/CTASection";
+
+const WHATSAPP_URL =
+  "https://wa.me/2349067418436?text=Hello%20ReadyShop%2C%20I%20am%20interested%20in%20your%20services.";
+
+const EMAIL_URL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=uzomanewman989%40gmail.com&su=ReadyShop%20Service%20Enquiry";
 
 const Index = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const scrollToStores = () => {
-    document.getElementById('stores')?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+    document.getElementById("stores")?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
-  const features = [
-    {
-      icon: <Settings className="h-6 w-6" />,
-      title: "One-Click Setup",
-      description: "Deploy your Shopify store instantly with our automated API integration"
-    },
-    {
-      icon: <Smartphone className="h-6 w-6" />,
-      title: "Mobile Optimized",
-      description: "All stores are fully responsive and optimized for mobile commerce"
-    },
-    {
-      icon: <CreditCard className="h-6 w-6" />,
-      title: "Payment Ready",
-      description: "Pre-configured payment gateways including Stripe, PayPal, and more"
-    },
-    {
-      icon: <Shield className="h-6 w-6" />,
-      title: "Secure & Scalable",
-      description: "Enterprise-grade security with unlimited scaling potential"
-    }
+  const scrollToContact = () => {
+    setMobileMenuOpen(false);
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  const navigationLinks = [
+    { label: "Stores", href: "#stores" },
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-300">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  StoreBuilder Pro
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#stores" className="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                  Stores
-                </a>
-                <a href="#features" className="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                  Features
-                </a>
-                <a href="#pricing" className="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                  Pricing
-                </a>
-                <Button variant="outline" size="sm">
-                  Sign In
-                </Button>
-                <Button size="sm">
-                  Get Started
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-[#FAF9F7] text-[#292625]">
+      {/* NAVIGATION */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#E8E2DB]/80 bg-[#FAF9F7]/95 backdrop-blur-md">
+        <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-2 px-4 sm:px-6 lg:px-8">
+          <a
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="shrink-0 text-xl font-semibold tracking-[-0.02em]"
+          >
+            ReadyShop<span className="text-[#8A6F52]">.</span>
+          </a>
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <Badge variant="secondary" className="mb-4">
-              🚀 Launch Your Store in Minutes
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-              Pre-Built Shopify Stores
-              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Ready to Launch
-              </span>
-            </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              Skip months of development. Get a professional, fully-customized Shopify store 
-              with seamless API integration, payment processing, and mobile optimization.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" onClick={scrollToStores} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Browse Stores
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline">
-                Watch Demo
-              </Button>
-            </div>
-          </div>
-
-          {/* Hero Features */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <Card key={index} className="text-center border-slate-200 hover:shadow-lg transition-shadow">
-                <CardHeader className="pb-3">
-                  <div className="mx-auto w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white mb-3">
-                    {feature.icon}
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600 text-sm">{feature.description}</p>
-                </CardContent>
-              </Card>
+          {/* Desktop navigation */}
+          <nav className="hidden items-center gap-8 md:flex">
+            {navigationLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[#625B55] transition hover:text-[#292625]"
+              >
+                {item.label}
+              </a>
             ))}
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={EMAIL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden text-sm font-medium text-[#625B55] transition hover:text-[#292625] lg:block"
+            >
+              Email Us
+            </a>
+
+            <button
+              type="button"
+              onClick={scrollToStores}
+              className="rounded-full bg-[#292625] px-3 py-2.5 text-xs font-medium text-white transition hover:bg-[#403A37] sm:px-5 sm:text-sm"
+            >
+              Explore Stores
+            </button>
+
+            {/* Mobile menu toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-label={
+                mobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#D8CEC2] text-[#292625] transition hover:bg-[#F3EEE7] md:hidden"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
-      </section>
 
-      {/* Store Showcase */}
-      <StoreShowcase />
+        {/* Mobile navigation dropdown */}
+        {mobileMenuOpen && (
+          <nav
+            id="mobile-navigation"
+            className="border-t border-[#E8E2DB] bg-[#FAF9F7] px-6 py-3 shadow-lg md:hidden"
+          >
+            {navigationLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block border-b border-[#E8E2DB] py-3.5 text-sm text-[#625B55] transition last:border-b-0 hover:text-[#292625]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        )}
+      </header>
 
-      {/* Feature Section */}
-      <FeatureSection />
+      {/* HERO */}
+      <main>
+        <section
+          id="home"
+          className="relative overflow-hidden border-b border-[#E8E2DB] bg-[#F3EEE7] pt-32"
+        >
+          <div className="mx-auto grid min-h-[680px] max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
+            <div className="max-w-2xl">
+              <div className="mb-6 inline-flex items-center rounded-full border border-[#D8CEC2] bg-white/60 px-4 py-2">
+                <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#8A6F52]" />
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-[#625B55]">
+                  Ready-made Shopify stores
+                </span>
+              </div>
 
-      {/* Pricing */}
-      <PricingSection />
+              <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.035em] text-[#292625] sm:text-6xl lg:text-7xl">
+                Start with a store
+                <span className="block italic text-[#8A6F52]">
+                  built to impress.
+                </span>
+              </h1>
 
-      {/* Testimonials */}
-      <TestimonialsSection />
+              <p className="mt-7 max-w-xl text-lg leading-8 text-[#625B55]">
+                Explore professionally designed Shopify stores created for
+                modern businesses. Choose a starting point and build your
+                brand from there.
+              </p>
 
-      {/* CTA Section */}
-      <CTASection />
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={scrollToStores}
+                  className="group inline-flex items-center justify-center rounded-full bg-[#292625] px-7 py-3.5 text-sm font-medium text-white transition hover:bg-[#403A37]"
+                >
+                  Explore Stores
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">StoreBuilder Pro</h3>
-              <p className="text-slate-400">
-                Professional Shopify stores built for success. Launch faster, scale bigger.
+                <a
+                  href="#features"
+                  className="inline-flex items-center justify-center rounded-full border border-[#CFC5BA] bg-white/60 px-7 py-3.5 text-sm font-medium text-[#292625] transition hover:bg-white"
+                >
+                  How it works
+                </a>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
+                {[
+                  "Shopify-ready designs",
+                  "Responsive layouts",
+                  "Built for customization",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center text-sm text-[#625B55]"
+                  >
+                    <Check className="mr-2 h-4 w-4 text-[#8A6F52]" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* STORE MARKETPLACE VISUAL */}
+            <div className="relative mx-auto w-full max-w-xl">
+              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#E3D6C8] blur-3xl" />
+              <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#DED2C5] blur-3xl" />
+
+              <div className="relative rounded-[2rem] border border-[#D8CEC2] bg-white p-7 shadow-[0_30px_80px_rgba(41,38,37,0.10)]">
+                <div className="mb-7 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#8A6F52]">
+                      The ReadyShop Collection
+                    </p>
+                    <h2 className="mt-2 font-serif text-3xl text-[#292625]">
+                      A store for every idea.
+                    </h2>
+                  </div>
+
+                  <div className="rounded-full border border-[#E2DAD2] px-3 py-1.5 text-xs text-[#625B55]">
+                    Shopify
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl bg-[#F3EEE7] p-5">
+                    <div className="mb-8 text-3xl">✦</div>
+                    <p className="font-serif text-xl text-[#292625]">
+                      Beauty
+                    </p>
+                    <p className="mt-1 text-sm text-[#77706A]">
+                      Elegant storefronts
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-[#EEEAE5] p-5">
+                    <div className="mb-8 text-3xl">◌</div>
+                    <p className="font-serif text-xl text-[#292625]">
+                      Fashion
+                    </p>
+                    <p className="mt-1 text-sm text-[#77706A]">
+                      Modern collections
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-[#E9E4DD] p-5">
+                    <div className="mb-8 text-3xl">⌂</div>
+                    <p className="font-serif text-xl text-[#292625]">
+                      Home
+                    </p>
+                    <p className="mt-1 text-sm text-[#77706A]">
+                      Lifestyle brands
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-[#F0ECE7] p-5">
+                    <div className="mb-8 text-3xl">+</div>
+                    <p className="font-serif text-xl text-[#292625]">
+                      More
+                    </p>
+                    <p className="mt-1 text-sm text-[#77706A]">
+                      More niches coming
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between rounded-2xl border border-[#E5DED6] px-5 py-4">
+                  <div>
+                    <p className="text-sm font-medium text-[#292625]">
+                      Multiple industries
+                    </p>
+                    <p className="mt-1 text-xs text-[#77706A]">
+                      One place to find your next store
+                    </p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-[#8A6F52]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* STORES */}
+        <div id="stores" className="scroll-mt-24">
+          <StoreShowcase />
+        </div>
+
+        {/* FEATURES */}
+        <div id="features" className="scroll-mt-24">
+          <FeatureSection />
+        </div>
+
+        {/* PRICING */}
+        <div id="pricing" className="scroll-mt-24">
+          <PricingSection />
+        </div>
+
+        {/* TESTIMONIALS */}
+        <TestimonialsSection />
+
+        {/* CTA */}
+        <CTASection />
+
+        {/* CONTACT */}
+        <section
+          id="contact"
+          className="scroll-mt-24 border-t border-[#E8E2DB] bg-[#F3EEE7] px-6 py-20 lg:px-8"
+        >
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#8A6F52]">
+              Get in touch
+            </p>
+
+            <h2 className="mt-3 font-serif text-4xl text-[#292625] sm:text-5xl">
+              Let's build your next step.
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-xl leading-7 text-[#625B55]">
+              Have a question about a Shopify theme, store setup, or a
+              business website? Contact ReadyShop and tell us what you need.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-[#292625] px-6 py-3.5 text-sm font-medium text-white transition hover:bg-[#403A37]"
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Contact on WhatsApp
+              </a>
+
+              <a
+                href={EMAIL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-[#CFC5BA] bg-white px-6 py-3.5 text-sm font-medium text-[#292625] transition hover:bg-[#FAF9F7]"
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Email ReadyShop
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-[#E8E2DB] bg-[#292625] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-4">
+            <div className="md:col-span-2">
+              <a
+                href="/"
+                className="text-xl font-semibold tracking-[-0.02em]"
+              >
+                ReadyShop<span className="text-[#C7A98A]">.</span>
+              </a>
+
+              <p className="mt-5 max-w-md text-sm leading-7 text-[#C8C0BA]">
+                Ready-made Shopify stores designed to give entrepreneurs a
+                polished starting point for their next online business.
               </p>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Store Templates</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API Integration</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Customization</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-              </ul>
+              <h3 className="text-sm font-semibold">Explore</h3>
+              <div className="mt-5 space-y-3">
+                <a
+                  href="#stores"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  Stores
+                </a>
+                <a
+                  href="#features"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  Features
+                </a>
+                <a
+                  href="#pricing"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  Pricing
+                </a>
+              </div>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Community</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
-              </ul>
+              <h3 className="text-sm font-semibold">Company</h3>
+              <div className="mt-5 space-y-3">
+                <a
+                  href="#contact"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  Contact
+                </a>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  WhatsApp Support
+                </a>
+                <a
+                  href={EMAIL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-[#C8C0BA] transition hover:text-white"
+                >
+                  Email Support
+                </a>
+              </div>
             </div>
           </div>
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 StoreBuilder Pro. All rights reserved.</p>
+
+          <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-sm text-[#AFA7A1] sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 ReadyShop. All rights reserved.</p>
+            <p>Built for entrepreneurs.</p>
           </div>
         </div>
       </footer>

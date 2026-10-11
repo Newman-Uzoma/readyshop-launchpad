@@ -1,144 +1,133 @@
 
-import React from 'react';
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import {
+  Palette,
+  Settings,
+  Globe,
+  MessageCircle,
+  ShoppingBag,
+  CheckCircle,
+} from "lucide-react";
+
+const benefits = [
+  {
+    icon: Palette,
+    title: "Shopify Theme Options",
+    description:
+      "Explore original storefront designs created for different business niches. Each theme's availability will be clearly stated.",
+  },
+  {
+    icon: Settings,
+    title: "Store Setup Assistance",
+    description:
+      "Get help configuring your Shopify storefront, including navigation, branding, homepage sections, and product listings within the agreed scope.",
+  },
+  {
+    icon: Globe,
+    title: "Business Websites",
+    description:
+      "Choose a simple website to introduce your business, present your services, and help potential customers contact you.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "A Clear Starting Point",
+    description:
+      "Start with an existing design instead of beginning your storefront or business website from a blank page.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Direct Communication",
+    description:
+      "Discuss your project, ask questions, and confirm the work required before agreeing to a service.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Clear Project Scope",
+    description:
+      "Understand what your selected service includes, what it costs, and which subscriptions or third-party expenses are separate.",
+  },
+];
+
+const highlights = [
+  "Shopify themes",
+  "Store setup services",
+  "Business websites",
+  "Direct enquiries",
+];
 
 const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      name: "Sarah Chen",
-      role: "Founder, EcoBeauty",
-      company: "Beauty & Skincare",
-      quote: "StoreBuilder Pro saved us 6 months of development time. Our store launched in 3 days and we made our first $10k in the first month. The API integration is seamless!",
-      results: "250% increase in conversion rate",
-      avatar: "SC"
-    },
-    {
-      name: "Michael Rodriguez",
-      role: "CEO, TechGear Hub",
-      company: "Electronics Retail",
-      quote: "The customization options are incredible. We got exactly what we needed without the technical headaches. Customer support is outstanding - they helped us every step of the way.",
-      results: "$50k revenue in first quarter",
-      avatar: "MR"
-    },
-    {
-      name: "Emily Thompson",
-      role: "Owner, Artisan Crafts",
-      company: "Handmade Goods",
-      quote: "As a non-technical person, I was worried about setting up an online store. StoreBuilder Pro made it so easy. Everything just works, and the mobile experience is fantastic.",
-      results: "Expanded to 3 new markets",
-      avatar: "ET"
-    },
-    {
-      name: "David Kim",
-      role: "Marketing Director, FitLife",
-      company: "Health & Wellness",
-      quote: "The pre-built integrations saved us thousands in development costs. The subscription management features work perfectly for our business model. Highly recommend!",
-      results: "300+ active subscribers",
-      avatar: "DK"
-    },
-    {
-      name: "Lisa Park",
-      role: "Founder, Pet Essentials",
-      company: "Pet Supplies",
-      quote: "We tried building our own store first - what a mistake! StoreBuilder Pro delivered in days what would have taken us months. The payment processing is rock solid.",
-      results: "40% repeat customer rate",
-      avatar: "LP"
-    },
-    {
-      name: "James Wilson",
-      role: "Owner, Home Solutions",
-      company: "Home & Garden",
-      quote: "The room planner integration is a game-changer for our business. Customers love visualizing products in their space before buying. Sales have tripled since launch.",
-      results: "200% increase in average order",
-      avatar: "JW"
-    }
-  ];
-
-  const stats = [
-    { value: "500+", label: "Stores Launched" },
-    { value: "98%", label: "Customer Satisfaction" },
-    { value: "$2M+", label: "Revenue Generated" },
-    { value: "24/7", label: "Support Available" }
-  ];
-
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section
+      id="why-readyshop"
+      className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 text-center">
           <Badge variant="secondary" className="mb-4">
-            ⭐ Customer Success Stories
+            Get to Know ReadyShop
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Trusted by Growing Businesses
+
+          <h2 className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl">
+            A Practical Starting Point for Your Online Business
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Join hundreds of successful business owners who chose StoreBuilder Pro 
-            to launch and grow their online stores.
+
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-slate-600">
+            ReadyShop helps entrepreneurs explore Shopify themes, get
+            storefront setup assistance, and build simple business websites.
+            Find an option that fits your needs and discuss your project
+            with us before getting started.
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
-                {stat.value}
-              </div>
-              <div className="text-slate-600 font-medium">
-                {stat.label}
-              </div>
+        <div className="mb-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {highlights.map((highlight) => (
+            <div
+              key={highlight}
+              className="rounded-xl border border-slate-200 bg-white p-5 text-center"
+            >
+              <p className="font-semibold text-slate-800">{highlight}</p>
             </div>
           ))}
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-slate-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <Avatar className="h-12 w-12 mr-4">
-                    <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-                      {testimonial.avatar}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                    <div className="text-sm text-slate-600">{testimonial.role}</div>
-                    <div className="text-xs text-slate-500">{testimonial.company}</div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((benefit) => {
+            const Icon = benefit.icon;
+
+            return (
+              <Card
+                key={benefit.title}
+                className="border-slate-200 transition-shadow hover:shadow-lg"
+              >
+                <CardContent className="p-6">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100">
+                    <Icon
+                      className="h-6 w-6 text-slate-700"
+                      aria-hidden="true"
+                    />
                   </div>
-                </div>
-                
-                <blockquote className="text-slate-700 mb-4 leading-relaxed">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-200">
-                  📈 {testimonial.results}
-                </Badge>
-              </CardContent>
-            </Card>
-          ))}
+
+                  <h3 className="mb-3 text-xl font-semibold text-slate-900">
+                    {benefit.title}
+                  </h3>
+
+                  <p className="leading-relaxed text-slate-600">
+                    {benefit.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
-        {/* Social Proof */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-2 bg-white rounded-full px-6 py-3 shadow-sm border border-slate-200">
-            <div className="flex -space-x-2">
-              {['SC', 'MR', 'ET', 'DK', 'LP'].map((initial, index) => (
-                <Avatar key={index} className="h-8 w-8 border-2 border-white">
-                  <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs">
-                    {initial}
-                  </AvatarFallback>
-                </Avatar>
-              ))}
-            </div>
-            <div className="text-sm text-slate-600">
-              <span className="font-semibold text-slate-900">500+ entrepreneurs</span> trust StoreBuilder Pro
-            </div>
-          </div>
+        <div className="mt-10 text-center">
+          <p className="text-sm leading-relaxed text-slate-500">
+            Have questions? Contact ReadyShop to discuss your requirements,
+            confirm availability, and agree on the project scope before
+            placing an order.
+          </p>
         </div>
       </div>
     </section>
